@@ -1,0 +1,68 @@
+[init]
+  defaultBranch = main
+
+[user]
+  name = Cristian Guilarte
+  email = 159936410+CrisGui@users.noreply.github.com
+  signingkey = /home/cris/.ssh/id_ed25519.pub
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = true
+
+[hub]
+  protocol = https
+
+[alias]
+  b = branch -ai
+  bb = blame -wCCC
+  c = commit -S
+  ca = commid -S --amend
+  dw = diff --word-diff
+  g = log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'
+  l = log
+  p = push --force-with-lease
+  pp = push --rebase
+  s = status -sb
+  st = stash --all
+  stats = !git --no-pager diff --stat
+  rq = rebase --autosquash
+  r = rebase -i
+  sw = switch
+
+  remoteSetHead = remote set-head origin --auto
+  defaultBranch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+
+  gm = !git switch $(git defaultBranch) #Go Main
+
+[rerere]
+  enabled = true
+
+[column]
+  ui = auto
+
+[branch]
+  sort = committerdate
+
+[commit]
+  gpgSign = true
+
+[core]
+  editor = nvim
+  fsmonitor = true
+
+[maintenance]
+  repo = /home/cris/dotfiles
+
+[fetch]
+  writeCommitGraph = true
+
+[gpg]
+  format = ssh
+[rebase]
+	updateRefs = true
+[push]
+	default = simple
