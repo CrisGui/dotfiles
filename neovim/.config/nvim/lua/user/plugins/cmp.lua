@@ -1,4 +1,6 @@
 return {
+  { "onsails/lspkind.nvim" },
+	{ "hrsh7th/cmp-nvim-lua" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-buffer" },
 	{ "hrsh7th/cmp-path" },
@@ -17,6 +19,7 @@ return {
 			"L3MON4D3/LuaSnip",
 		},
 		config = function()
+			local lspkind = require("lspkind")
 			local cmp = require("cmp")
 			cmp.setup({
 				enabled = function()
@@ -59,10 +62,27 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
+					{ name = "nvim_lua" },
 					{ name = "luasnip" },
+					{ name = "path" },
+					{ name = "buffer" },
 				}, {
 					{ name = "buffer" },
 				}),
+				formatting = {
+				  format = lspkind.cmp_format({
+				    mode = "symbol",
+				    maxwith = 50,
+				    with_text = true,
+				    menu = {
+				      buffer = "[buf]",
+				      path = "[path]",
+				      luasnip = "[SNIP]",
+				      nvim_lsp = "[LSP]",
+				      nvim_lau = "[API]",
+				    },
+				  })
+				},
 			})
 
 			cmp.setup.cmdline({ "/", "?" }, {

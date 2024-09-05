@@ -1,5 +1,6 @@
 return {
 	{
+		--event = "VeryLazy",
 		main = "mason-lspconfig",
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
@@ -57,5 +58,9 @@ return {
 				},
 			},
 		},
+		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup()
+		end,
 	},
 }
