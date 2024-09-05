@@ -1,5 +1,7 @@
 local profile = "user"
 
+require("user")
+
 if vim.loader then
 	vim.loader.enable()
 end
