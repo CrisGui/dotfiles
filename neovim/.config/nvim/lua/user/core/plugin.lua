@@ -25,7 +25,7 @@ local opts = {
     version = nil,
     cond = vim.g.vscode,
   },
-  spec = { import = "user/plugins" },
+  --spec = { import = "user/plugins" },
   local_spec = true,
   lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
   concurrency = jit.os:find("Windows") and (vim.uv.available_parallelism() * 2) or nil,
@@ -169,4 +169,4 @@ local opts = {
   },
 }
 
-require("lazy").setup(opts)
+require("lazy").setup({ import = "user/plugins" }, opts)
