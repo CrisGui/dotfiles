@@ -1,5 +1,6 @@
-return {
-	-- Dependency
-	main = "lspconfig",
-	"neovim/nvim-lspconfig",
-}
+return {}
+-- return {
+-- 	-- Dependency
+-- 	main = "lspconfig",
+-- 	"neovim/nvim-lspconfig",
+-- }
