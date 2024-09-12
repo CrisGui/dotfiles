@@ -16,7 +16,7 @@ set $right l
 
 set $term              kitty
 set $browser           librewolf
-set $multi             temux
+set $multi             tmux
 set $file_explorer     pcmanfm
 set $folder_background ~/Pictures/catppuccin-wallpapers/misc/windows-error.jpg
 #~/Pictures/catppuccin-wallpapers/misc/windows-error.jpg
