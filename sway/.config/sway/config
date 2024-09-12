@@ -1,3 +1,7 @@
+include /etc/sway/config.d/*
+include ~/.config/sway/conf.d/*
+include catppuccin-frappe
+
 ### Variables
 set $mod Mod4
 set $alt Mod1
@@ -5,31 +9,51 @@ set $enr Return
 set $shf Shift
 set $ctl Ctrl
 
-set $left h
-set $down j
-set $up k
+set $left  h
+set $down  j
+set $up    k
 set $right l
 
-set $term kitty
+set $term              kitty
+set $browser           librewolf
+set $multi             temux
+set $file_explorer     pcmanfm
+set $folder_background ~/Pictures/catppuccin-wallpapers/misc/windows-error.jpg
+#~/Pictures/catppuccin-wallpapers/misc/windows-error.jpg
+#~/Pictures/catppuccin-wallpapers/os/arch-black-4k.png
+#~/Pictures/catppuccin-wallpapers/flatppuccin/flatppuccin_4k_macchiato.png
+set $cmd_screenclip    ~/.local/bin/screenclip
+set $cmd_screenshot    ~/.local/bin/screenshot
 
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
+font pango:JetBrainsMono 10
+
+default_border          none
+default_floating_border pixel 10
+hide_edge_borders       smart
+smart_gaps              on
+gaps                    inner 3
+smart_borders           on
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
 ### Output configuration
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg $folder_background fill
 
 ### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
+
 
 ### Input configuration
 input "1:1:AT_Translated_Set_2_keyboard" {
@@ -37,13 +61,14 @@ input "1:1:AT_Translated_Set_2_keyboard" {
   xkb_options "caps:swapescape"
 }
 
-### Key bindings
-bindsym $mod+$enr exec $term
-bindsym $mod+$shf+q kill
-bindsym $mod+d exec $menu
+### Output configuration
+output LVDS-1 position 0,0
 
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
+### Key bindings
+bindsym $mod+$enr   exec $term
+bindsym $mod+$shf+q kill
+bindsym $mod+d      exec $menu
+
 floating_modifier $mod normal
 
 bindsym $mod+$shf+c reload
@@ -56,12 +81,17 @@ bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
 
 # Swap windows
-bindsym $mod+$shf+$left move left
-bindsym $mod+$shf+$down move down
-bindsym $mod+$shf+$up move up
+bindsym $mod+$shf+$left  move left
+bindsym $mod+$shf+$down  move down
+bindsym $mod+$shf+$up    move up
 bindsym $mod+$shf+$right move right
 
 # Workspaces:
+# Move workspaces
+bindsym $mod+Left  move workspace to output left
+bindsym $mod+Right move workspace to output right
+bindsym $mod+Up    move workspace to output up
+bindsym $mod+Down  move workspace to output down
 # Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -100,22 +130,23 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+a focus parent
 
 # Scratchpad:
-# Move the currently focused window to the scratchpad
 bindsym $mod+$shf+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Special keys
-bindsym XF86MonBrightnessUp exec brightnessctl s +10%
+bindsym XF86MonBrightnessUp   exec brightnessctl s +10%
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym Print                 exec $cmd_screenshot
+bindsym $shf+Print            exec $cmd_screenclip
 
 # Resizing containers:
 mode "resize" {
-  bindsym $left resize shrink width 10px
-  bindsym $down resize grow height 10px
-  bindsym $up resize shrink height 10px
+  bindsym $left  resize shrink width 10px
+  bindsym $down  resize grow height 10px
+  bindsym $up    resize shrink height 10px
   bindsym $right resize grow width 10px
 
   bindsym Return mode "default"
@@ -125,5 +156,19 @@ bindsym $mod+r mode "resize"
 
 # Status Bar:
 bar swaybar_command waybar
+# bar {
+#   colors {
+#     background         $base
+#     statusline         $text
+#     focused_statusline $text
+#     focused_separator  $base
+#
+#     # target           border bg        text
+#     focused_workspace  $base  $mauve    $crust
+#     active_workspace   $base  $surface2 $text
+#     inactive_workspace $base  $base     $text
+#     urgent_workspace   $base  $red      $crust
+#   }
+# }
 
-include /etc/sway/config.d/*
+exec wlsunset -t 3000k -T 4000k
