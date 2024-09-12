@@ -1,9 +1,9 @@
 local profile = "user"
 
-require("user")
+require(profile)
 
 if vim.loader then
-	vim.loader.enable()
+  vim.loader.enable()
 end
 
 --[[
