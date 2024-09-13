@@ -1,3 +1,5 @@
 /neovim/**/lazy-lock.json
 /neovim/**/.luarc.json
 /neovim/**/spell
+
+/tmux/**/plugins/
