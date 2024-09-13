@@ -88,10 +88,10 @@ bindsym $mod+$shf+$right move right
 
 # Workspaces:
 # Move workspaces
-bindsym $mod+Left  move workspace to output left
-bindsym $mod+Right move workspace to output right
-bindsym $mod+Up    move workspace to output up
-bindsym $mod+Down  move workspace to output down
+bindsym $mod+$ctl+$left  move workspace to output left
+bindsym $mod+$ctl+$down  move workspace to output down
+bindsym $mod+$ctl+$up    move workspace to output up
+bindsym $mod+$ctl+$right move workspace to output right
 # Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
