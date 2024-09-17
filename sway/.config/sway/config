@@ -22,8 +22,8 @@ set $folder_background ~/Pictures/catppuccin-wallpapers/misc/windows-error.jpg
 #~/Pictures/catppuccin-wallpapers/misc/windows-error.jpg
 #~/Pictures/catppuccin-wallpapers/os/arch-black-4k.png
 #~/Pictures/catppuccin-wallpapers/flatppuccin/flatppuccin_4k_macchiato.png
-set $cmd_screenclip    ~/.local/bin/screenclip
-set $cmd_screenshot    ~/.local/bin/screenshot
+set $cmd_screenclip    ~/.config/sway/screenclip
+set $cmd_screenshot    ~/.config/sway/screenshot
 
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
