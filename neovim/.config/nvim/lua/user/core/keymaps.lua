@@ -31,16 +31,16 @@ mapkey("n", "*", "*zz")
 --mapkey("i", "jj", "<ESC>")
 
 -- MOVEMENT
-mapkey("n", "<C-h>", "<C-w>h")
-mapkey("n", "<C-j>", "<C-w>j")
-mapkey("n", "<C-k>", "<C-w>k")
-mapkey("n", "<C-l>", "<C-w>l")
-
+-- mapkey("n", "<C-h>", "<C-w>h")
+-- mapkey("n", "<C-j>", "<C-w>j")
+-- mapkey("n", "<C-k>", "<C-w>k")
+-- mapkey("n", "<C-l>", "<C-w>l")
+--
 -- BIG STEPS
-mapkey({ "n", "v" }, "<M-h>", "_")
-mapkey({ "n", "v" }, "<M-j>", "<C-d>zz")
-mapkey({ "n", "v" }, "<M-k>", "<C-u>zz")
-mapkey({ "n", "v" }, "<M-l>", "$")
+-- mapkey({ "n", "v" }, "<M-h>", "_")
+-- mapkey({ "n", "v" }, "<M-j>", "<C-d>zz")
+-- mapkey({ "n", "v" }, "<M-k>", "<C-u>zz")
+-- mapkey({ "n", "v" }, "<M-l>", "$")
 
 -- LAYOUT
 mapkey("n", "<C-Up>", "<CMD>resize -2<CR>")
@@ -67,10 +67,10 @@ mapkey("n", "<leader>ct", "<CMD>tabclose<CR>", { desc = "[c]lose [t]ab" })
 
 -- EDITING
 mapkey("n", "J", "mzJ`z")
-mapkey("v", "<C-k>", "yddkP<S-v>")
-mapkey("v", "<C-j>", "yddjP<S-v>")
-mapkey("v", "<C-h>", "<< <S-v>")
-mapkey("v", "<C-l>", ">> <S-v>")
+mapkey({ "n", "v" }, "<C-k>", "<CMD>move -2<CR>")
+mapkey({ "n", "v" }, "<C-j>", "<CMD>move +1<CR>")
+mapkey({ "n", "v" }, "<C-l>", "<CMD>>><CR>")
+mapkey({ "n", "v" }, "<C-h>", "<CMD><<<CR>")
 
 -- WORDS
 mapkey({ "n" }, "<M-U>", "viwUe", { desc = "[Alt]erate [U]ppercase" })
@@ -81,8 +81,8 @@ mapkey({ "n" }, "<M-t>", "b~", { desc = "[Alt]erate [t]itlecase" })
 mapkey("", "U", "<CMD>redo<CR>")
 mapkey("n", "<leader>x", "<CMD>!chmod +x %<CR>")
 mapkey({ "n", "v" }, "<C-q><C-g>", function() -- search for <cword> on google
-	vim.fn.system({
-		"xdg-open",
-		"https://google.com/search?q=" .. vim.fn.expand("<cword>"),
-	})
+  vim.fn.system({
+    "xdg-open",
+    "https://google.com/search?q=" .. vim.fn.expand("<cword>"),
+  })
 end, { desc = "[C-q]uery [C-g]oogle" })
