@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+FILENAME="screenclip-$(date +%F-%T)"
+grim -c -t jpeg -q 100 -l 9 -g "$(slurp)" "$HOME/Pictures/screenshots/$FILENAME.jpeg"

@@ -5,9 +5,7 @@ include catppuccin-frappe
 ### Variables
 set $mod Mod4
 set $alt Mod1
-set $enr Return
-set $shf Shift
-set $ctl Ctrl
+set $Print 107
 
 set $left  h
 set $down  j
@@ -18,12 +16,17 @@ set $term              kitty
 set $browser           librewolf
 set $multi             tmux
 set $file_explorer     pcmanfm
-set $folder_background ~/Pictures/catppuccin-wallpapers/misc/windows-error.jpg
+set $folder_background ~/Pictures/catppuccin-wallpapers/os/arch-black-4k.png
 #~/Pictures/catppuccin-wallpapers/misc/windows-error.jpg
 #~/Pictures/catppuccin-wallpapers/os/arch-black-4k.png
 #~/Pictures/catppuccin-wallpapers/flatppuccin/flatppuccin_4k_macchiato.png
+<<<<<<< Updated upstream
 set $cmd_screenclip    ~/.local/bin/screenclip
 set $cmd_screenshot    ~/.local/bin/screenshot
+=======
+set $cmd_screenclip    ~/.config/sway/scripts/screenclip
+set $cmd_screenshot    ~/.config/sway/scripts/screenshot
+>>>>>>> Stashed changes
 
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
@@ -65,14 +68,14 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 output LVDS-1 position 0,0
 
 ### Key bindings
-bindsym $mod+$enr   exec $term
-bindsym $mod+$shf+q kill
+bindsym $mod+Return   exec $term
+bindsym $mod+Shift+q kill
 bindsym $mod+d      exec $menu
 
 floating_modifier $mod normal
 
-bindsym $mod+$shf+c reload
-bindsym $mod+$shf+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # Move your focus around
 bindsym $mod+$left  focus left
@@ -81,17 +84,17 @@ bindsym $mod+$up    focus up
 bindsym $mod+$right focus right
 
 # Swap windows
-bindsym $mod+$shf+$left  move left
-bindsym $mod+$shf+$down  move down
-bindsym $mod+$shf+$up    move up
-bindsym $mod+$shf+$right move right
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
 
 # Workspaces:
 # Move workspaces
-bindsym $mod+$ctl+$left  move workspace to output left
-bindsym $mod+$ctl+$down  move workspace to output down
-bindsym $mod+$ctl+$up    move workspace to output up
-bindsym $mod+$ctl+$right move workspace to output right
+bindsym $mod+Ctrl+$left  move workspace to output left
+bindsym $mod+Ctrl+$down  move workspace to output down
+bindsym $mod+Ctrl+$up    move workspace to output up
+bindsym $mod+Ctrl+$right move workspace to output right
 # Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -104,16 +107,16 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 # Move focused container to workspace
-bindsym $mod+$shf+1 move container to workspace number 1
-bindsym $mod+$shf+2 move container to workspace number 2
-bindsym $mod+$shf+3 move container to workspace number 3
-bindsym $mod+$shf+4 move container to workspace number 4
-bindsym $mod+$shf+5 move container to workspace number 5
-bindsym $mod+$shf+6 move container to workspace number 6
-bindsym $mod+$shf+7 move container to workspace number 7
-bindsym $mod+$shf+8 move container to workspace number 8
-bindsym $mod+$shf+9 move container to workspace number 9
-bindsym $mod+$shf+0 move container to workspace number 10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 # Layout stuff:
 bindsym $mod+b splith
@@ -123,24 +126,24 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+f fullscreen
 
-bindsym $mod+$shf+space floating toggle
+bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Move focus to the parent container
 #bindsym $mod+a focus parent
 
 # Scratchpad:
-bindsym $mod+$shf+minus move scratchpad
+bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Special keys
-bindsym XF86MonBrightnessUp   exec brightnessctl s +10%
-bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
-bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym Print                 exec $cmd_screenshot
-bindsym $shf+Print            exec $cmd_screenclip
+bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl s +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
+bindsym XF86AudioRaiseVolume  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute         exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindcode Print               exec --no-startup-id $cmd_screenshot
+bindcode Shift+Print         exec --no-startup-id $cmd_screenclip
 
 # Resizing containers:
 mode "resize" {
