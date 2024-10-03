@@ -1,0 +1,19 @@
+stow -vv -d /home/cris/dotfiles -t /home/cris -S bash
+bat
+binaries
+btop
+dunst
+git
+kitty
+lazygit
+ly
+mpv
+nano
+neovim
+pcmanfm
+starship
+sway
+swaylock
+tmux
+waybar
+yay
